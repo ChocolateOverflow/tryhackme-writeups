@@ -87,7 +87,7 @@ sed -i '$d' .bashrc
 
 ... which gives us Flag 0.
 
-~[Flag 0](./flag0.png)
+![Flag 0](./flag0.png)
 
 ## Getting rid of the bash-killer
 
@@ -146,7 +146,7 @@ Several things to be noted here:
 1. A user `moodr` appears to have recovery files for `fixutil`
 1. Interesting variables/functions `index_of_encryption_key` and `encryption_key_dir` to look for when reverse-engineering `fixutil`
 1. The infinite loop that spammed us when connecting with SSH
-1. A strange executable `/bin/admin`
+1. An unknown executable `/bin/admin` (I just don't know what this belongs to)
 
 First, to deal with the most annoying and obvious problem, `/opt/brilliant_script.sh`,  which appears to be what's kicking us off our SSH sessions.
 
