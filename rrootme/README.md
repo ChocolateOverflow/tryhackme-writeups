@@ -1,4 +1,4 @@
-# RootMe writeup
+# [RootMe](https://tryhackme.com/room/rrootme)
 
 ## Task 2: Reconnaissance
 

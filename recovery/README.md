@@ -1,4 +1,4 @@
-# Writeup for tryhackme [Recovery](https://tryhackme.com/room/recovery) by ChocolateOverflow
+# [Recovery](https://tryhackme.com/room/recovery)
 
 In this writeup, I'm going through my steps in solving tryhackme's Recovery box.
 

@@ -1,4 +1,4 @@
-# Pickle Rick writeup
+# [Pickle Rick](https://tryhackme.com/room/picklerick)
 
 First of all, checking the source code of the front page reveals a username "R1ckRul3s" in the comments
 
