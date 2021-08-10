@@ -1,0 +1,31 @@
+\chapter{Executive Summary}
+
+In this penetration test, Mr. Thomas Wreath's network was examined for security weaknesses. This test was a grey-box test, with a rough layout of the network described. The scope of the assessment was as follows:
+\begin{itemize}
+	\item Public Facing Web Server: 10.200.177.200
+	\item 2 other machines on the 10.200.177.0/24 network:
+	\begin{itemize}
+    \item Git Server
+    \item Personal Computer
+	\end{itemize}
+\end{itemize}
+
+Table ~\ref{tbl:targets} contains the overview of examined systems during the penetration test.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{IP address} & \textbf{Hostnames}\\
+		\hline
+		10.200.177.200 & thomaswreath.thm, prod-serv\\
+		\hline
+		10.200.177.150 & git-serv\\
+		\hline
+		10.200.177.100 & wreath-pc\\
+		\hline
+	\end{tabular}
+	\caption{Targets examined during the penetration test}
+	\label{tbl:targets}
+\end{table}
+
+As a result of the test, several high severity vulnerabilities have been identified among the assets in scope, some of which are of significant risk. Vulnerabilities of highes risks include: Out-of-date Software, Web Services running as High-privilege Users, Weak Credentials, and Insecure Administrative Settings.

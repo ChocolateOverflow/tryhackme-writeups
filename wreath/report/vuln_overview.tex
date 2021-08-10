@@ -1,0 +1,20 @@
+\chapter{Vulnerability Overview}
+Table \ref{tbl:vuln overview} depicts all vulnerabilities found during the penetration test. They are categorized by their risk and potential and are differentiated in the categories low (green), medium (yellow), high (orange) and critical (red).
+
+\begin{table}[h]
+	\begin{tabular}{| l | l | p{7cm} | l | l |}
+		\hline
+		CVSS Score & Asset & Vulnerability & Section & Page\\
+		\hline
+		\cellcolor{red}10 & prod-serv & CVE-2019-15107: Command Injection &  \ref{ss:issue-1} & \pageref{ss:issue-1} \\
+		\hline
+		\cellcolor{red}10 & git-serv & Unauthenticated Remote Code Execution & \ref{ss:issue-2} & \pageref{ss:issue-2} \\
+		\hline
+		\cellcolor{yellow}6.8 & wreath-pc & Arbitrary File Upload & \ref{ss:issue-3} & \pageref{ss:issue-3} \\
+		\hline
+		\cellcolor{orange}7.8 & wreath-pc & Unquoted Service Path & ~\ref{ss:issue-4} & ~\pageref{ss:issue-4} \\
+		\hline
+	\end{tabular}
+	\caption{Vulnerability overview}
+	\label{tbl:vuln overview}
+\end{table}

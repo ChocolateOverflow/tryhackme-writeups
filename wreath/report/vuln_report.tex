@@ -1,0 +1,167 @@
+\chapter{Results}
+In this chapter, the vulnerabilities found during the penetration test are presented. All the issues are grouped by target and contain the following information:
+\begin{itemize}
+	\item Brief description.
+	\item CVSS Base Score -- see \href{https://www.first.org/cvss/user-guide}{\textcolor{blue}{\underline{here}}} for details.
+	\item Exploitability -- describes the likelihood of an issue being used against customer's infrastructure.
+	\item Business impact.
+	\item References to classifications: WASC, OWASP, CWE.
+	\item Steps to reproduce.
+\end{itemize}
+
+\newpage
+
+\section{Public facing web server}
+\textbf{Hostnames}: thomaswreath.thm, prod-serv\\
+\textbf{Server IP address}: 10.200.177.200
+
+This is the only public facing server among the targets. The page on ports 80 and 443, which reveal the hostname \lstinline{thomaswreath.thm}, are simply a static page with nothing exploitable. The web service on port 10000, however, is vulnerable to CVE-2019-15107 and is ran as root, thus giving me an easy exploitation to become root on the server.\\
+
+\subsection{CVE-2019-15107: Command Injection} \label{ss:issue-1}
+The version of Minserv (1.890) running on the server has a known vulnerability CVE-2019-15107, giving us code execution on the server. In addition, the server is running as root, thus giving us code execution as root.
+
+Basic information about this issue is presented in Table \ref{tbl:issue-1}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | p{10cm} |}
+		\hline
+		Description & CVE-2019-15107: Command Injection as root \\
+		\hline
+		CVSS Base Score & 9.8 \\
+		\hline
+		Exploitablity & High \\
+		\hline
+		Business impact & Total control over server. \\
+		\hline
+    References to classifications & CWE-78, CWE-250 \\
+		\hline
+	\end{tabular}
+\caption{Issue \#1: Command Injection as root}
+\label{tbl:issue-1}
+\end{table}
+
+\subsubsection{Minimal proof of concept}
+\begin{enumerate}
+    \item Download PoC from https://github.com/MuirlandOracle/CVE-2019-15107
+    \item run exploit: \lstinline{./CVE-2019-15107.py thomaswreath.thm}
+\end{enumerate}
+
+\subsubsection{Proposed solutions} \label{solution:issue-1}
+Update Minserv
+
+\newpage
+
+\section{Git Server}
+\textbf{Hostname}: git-serv\\
+\textbf{Server IP address}: 10.200.177.150
+
+This git server is internal and is said to contain code of Mr.Wreath's code for his website. The git server is running an old version of GitStack vulnerable to a well-known Unauthenticated Remote Code Execution exploit and is running the web service as "nt authority\textbackslash system".
+
+\subsection{Unauthenticated Remote Code Execution} \label{ss:issue-2}
+The version of GitStack running on the git server is vulnerable to Unauthenticated Remote Code Execution with a pre-made PoC. Additionally, the web server is running as "nt authority\textbackslash system", thus running the PoC immediately gives us code execution as "nt authority\textbackslash system" on git-serv.
+
+Basic information about this issue is presented in Table \ref{tbl:issue-2}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | p{10cm} |}
+		\hline
+		Description & Unauthenticated Remote Code Execution as "nt-authority\textbackslash system" \\
+		\hline
+		CVSS Base Score & 10.0 \\
+		\hline
+		Exploitablity & High \\
+		\hline
+		Business impact & Complete control over server, source code leakage.  \\
+		\hline
+    References to classifications & CWE-78, CWE-250 \\
+		\hline
+	\end{tabular}
+\caption{Issue \#2: Unauthenticated Remote Code Execution}
+\label{tbl:issue-2}
+\end{table}
+
+\subsubsection{Minimal proof of concept}
+\begin{enumerate}
+  \item Download exploit: \href{https://www.exploit-db.com/exploits/43777}{https://www.exploit-db.com/exploits/43777}
+  \item Modify explioit to change backdoor location (modified exploit in section \ref{appendix-1}, page \pageref{appendix-1})
+  \item Run exploit
+  \item Acquire and use backdoor at \lstinline{/web/exploit-chocola.php}
+\end{enumerate}
+
+\subsubsection{Proposed solutions} \label{solution:issue-2}
+Update GitStack
+
+\newpage
+
+\section{Personal PC}
+\textbf{Hostname}: wreath-pc\\
+\textbf{Server IP address}: 10.200.177.100
+The web service running on port 80 uses the source code found in git-serv. Analyzing the source code, we're able to identified a flawed filter in the file upload functionality and abuse it to upload PHP code, giving us code execution. With a shell on wreath-pc, we find that the service "SystemExplorerHelpService" is vulnerable to "SystemExplorerHelpService", which we use to become "nt authority\textbackslash system" on wreath-pc.
+
+\subsection{Arbitrary File Upload} \label{ss:issue-3}
+The file upload filter checks the 2nd instead of the last extension in the file name of the uploaded file, making it possible to run PHP code by uploading a file whose 2nd extension is that of an image and last extension is ".php".
+
+Basic information about this issue is presented in Table \ref{tbl:issue-3}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | p{10cm} |}
+		\hline
+		Description & Insufficient validation of uploaded files allow for upload of PHP files, leading to execution of arbitrary PHP code on the server \\
+		\hline
+		CVSS Base Score & 6.8 \\
+		\hline
+		Exploitablity & Medium \\
+		\hline
+		Business impact & Total compromise of source code, no immediate impact on availability.  \\
+		\hline
+		References to classifications & CWE-434, CWE-646 \\
+		\hline
+	\end{tabular}
+	\caption{Issue \#3: Improper Validation of Uploaded Files}
+	\label{tbl:issue-3}
+\end{table}
+
+\subsubsection{Minimal proof of concept}
+\begin{enumerate}
+  \item Create a valid image file (e.g. PNG)
+  \item Create a one-line PHP code to be executed
+  \item Embed PHP code in image: \lstinline{exiftool -Comment=<PHP one-liner> filename.png.php}
+  \item Upload malicious image file
+  \item Goto \lstinline{/resources/uploads/filename.png.php} to execute PHP code
+\end{enumerate}
+
+\subsubsection{Proposed solutions} \label{solution:issue-3}
+Implement stricter file validation, checking the last file extension instead of the 2nd.
+
+\subsection{Unquoted Service Path} \label{ss:issue-4}
+Ther service "SystemExplorerHelpService" has its path unquoted and with spaces. Additionally, a directory in the unquoted path is given "FullControl" access the our user, which is excessive privilege. Together, they make it possible to trick Windows into running a malicious file elsewher in the path
+
+Basic information about this issue is presented in Table \ref{tbl:issue-4}.
+\begin{table}[h]
+	\centering
+	\begin{tabular}{| l | p{10cm} |}
+		\hline
+		Description & Unquoted Path of the Service "SystemExplorerHelpService" allows escalation to the user "nt-authority\textbackslash system" \\
+		\hline
+		CVSS Base Score & 7.8 \\
+		\hline
+		Exploitablity & High \\
+		\hline
+		Business impact & Total control over machine \\
+		\hline
+		References to classifications & CWE-428 \\
+		\hline
+	\end{tabular}
+	\caption{Issue \#4: Unquoted Service Path}
+	\label{tbl:issue-4}
+\end{table}
+
+\subsubsection{Minimal proof of concept}
+\begin{enumerate}
+  \item Write program to execute desired code (code used is in section \ref{appendix-2}, page \pageref{appendix-2})
+  \item Place compiled binary in "C:\textbackslash Program Files (x86)\textbackslash System Explorer\textbackslash System.exe"
+  \item Restart the service "SystemExplorerHelpService" (stop/start or wait until machine is restarted)
+\end{enumerate}
+
+\subsubsection{Proposed solutions} \label{solution:issue-4}
+Change the service to use the fully quoted path.
