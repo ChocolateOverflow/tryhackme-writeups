@@ -1,0 +1,87 @@
+# Nmap 7.92 scan initiated Fri Feb 18 16:08:59 2022 as: nmap -vvv -p 22,21,8080,4420 -sCV -oA knocked 10.10.243.100
+Nmap scan report for 10.10.243.100
+Host is up, received conn-refused (0.25s latency).
+Scanned at 2022-02-18 16:09:08 +07 for 93s
+
+PORT     STATE SERVICE      REASON  VERSION
+21/tcp   open  ftp          syn-ack vsftpd 3.0.3
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_-rw-r--r--    1 ftp      ftp           162 Apr 02  2021 note.txt
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.17.21.200
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+22/tcp   open  ssh          syn-ack OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 37:43:64:80:d3:5a:74:62:81:b7:80:6b:1a:23:d8:4a (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIDEV5ShmazmTw/1A6+19Bz9t3Aa669UOdJ6wf+mcv3vvJmh6gC8V8J58nisEufW0xnT69hRkbqrRbASQ8IrvNS8vNURpaA0cycHDntKA17ukX0HMO7AS6X8uHfIFZwTck5v6tLAyHlgBh21S+wOEqnANSms64VcSUma7fgUCKeyJd5lnDuQ9gCnvWh4VxSNoW8MdV64sOVLkyuwd0FUTiGctjTMyt0dYqIUnTkMgDLRB77faZnMq768R2x6bWWb98taMT93FKIfjTjGHV/bYsd/K+M6an6608wMbMbWz0pa0pB5Y9k4soznGUPO7mFa0n64w6ywS7wctcKngNVg3H
+|   256 53:c6:82:ef:d2:77:33:ef:c1:3d:9c:15:13:54:0e:b2 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCs+ZcCT7Bj2uaY3QWJFO4+e3ndWR1cDquYmCNAcfOTH4L7lBiq1VbJ7Pr7XO921FXWL05bAtlvY1sqcQT6W43Y=
+|   256 ba:97:c3:23:d4:f2:cc:08:2c:e1:2b:30:06:18:95:41 (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGq9I/445X/oJstLHIcIruYVdW4KqIFZks9fygfPkkPq
+4420/tcp open  nvm-express? syn-ack
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, RTSPRequest: 
+|     INTERNAL SHELL SERVICE
+|     please note: cd commands do not work at the moment, the developers are fixing it at the moment.
+|     ctrl-c
+|     Please enter password:
+|     Invalid password...
+|     Connection Closed
+|   NULL, RPCCheck: 
+|     INTERNAL SHELL SERVICE
+|     please note: cd commands do not work at the moment, the developers are fixing it at the moment.
+|     ctrl-c
+|_    Please enter password:
+8080/tcp open  http         syn-ack Apache httpd 2.4.46 ((Unix) OpenSSL/1.1.1d PHP/7.3.27)
+|_http-server-header: Apache/2.4.46 (Unix) OpenSSL/1.1.1d PHP/7.3.27
+|_http-title: Cat Pictures - Index page
+| http-methods: 
+|_  Supported Methods: GET HEAD POST OPTIONS
+| http-open-proxy: Potentially OPEN proxy.
+|_Methods supported:CONNECTION
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port4420-TCP:V=7.92%I=7%D=2/18%Time=620F623B%P=x86_64-pc-linux-gnu%r(NU
+SF:LL,A0,"INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\
+SF:x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20ar
+SF:e\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\
+SF:nPlease\x20enter\x20password:\n")%r(GenericLines,C6,"INTERNAL\x20SHELL\
+SF:x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20a
+SF:t\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x
+SF:20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20passw
+SF:ord:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n")%r(GetRequest,
+SF:C6,"INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20
+SF:do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x
+SF:20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPl
+SF:ease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Cl
+SF:osed\n")%r(HTTPOptions,C6,"INTERNAL\x20SHELL\x20SERVICE\nplease\x20note
+SF::\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the
+SF:\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20n
+SF:ot\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\
+SF:.\.\.\nConnection\x20Closed\n")%r(RTSPRequest,C6,"INTERNAL\x20SHELL\x20
+SF:SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x
+SF:20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20t
+SF:he\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password
+SF::\nInvalid\x20password\.\.\.\nConnection\x20Closed\n")%r(RPCCheck,A0,"I
+SF:NTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x2
+SF:0not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fix
+SF:ing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\
+SF:x20enter\x20password:\n")%r(DNSVersionBindReqTCP,C6,"INTERNAL\x20SHELL\
+SF:x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20a
+SF:t\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x
+SF:20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20passw
+SF:ord:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n");
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Feb 18 16:10:41 2022 -- 1 IP address (1 host up) scanned in 101.68 seconds

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Feb 18 15:57:16 2022 as: nmap -vvv -p 22,4420,8080 -sCV -oA init 10.10.243.100 -->
+<nmaprun scanner="nmap" args="nmap -vvv -p 22,4420,8080 -sCV -oA init 10.10.243.100" start="1645174636" startstr="Fri Feb 18 15:57:16 2022" version="7.92" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="3" services="22,4420,8080"/>
+<verbose level="3"/>
+<debugging level="0"/>
+<taskbegin task="NSE" time="1645174636"/>
+<taskend task="NSE" time="1645174636"/>
+<taskbegin task="NSE" time="1645174636"/>
+<taskend task="NSE" time="1645174636"/>
+<taskbegin task="NSE" time="1645174636"/>
+<taskend task="NSE" time="1645174636"/>
+<taskbegin task="Ping Scan" time="1645174636"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="10.10.243.100" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<taskend task="Ping Scan" time="1645174637" extrainfo="1 total hosts"/>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1645174637"/>
+<taskend task="Parallel DNS resolution of 1 host." time="1645174646"/>
+<taskbegin task="Connect Scan" time="1645174646"/>
+<taskend task="Connect Scan" time="1645174647" extrainfo="3 total ports"/>
+<taskbegin task="Service scan" time="1645174647"/>
+<taskprogress task="Service scan" time="1645174713" percent="66.67" remaining="34" etc="1645174746"/>
+<taskend task="Service scan" time="1645174732" extrainfo="3 services on 1 host"/>
+<taskbegin task="NSE" time="1645174732"/>
+<taskend task="NSE" time="1645174754"/>
+<taskbegin task="NSE" time="1645174754"/>
+<taskend task="NSE" time="1645174756"/>
+<taskbegin task="NSE" time="1645174756"/>
+<taskend task="NSE" time="1645174756"/>
+<host starttime="1645174646" endtime="1645174756"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="10.10.243.100" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="7.6p1 Ubuntu 4ubuntu0.3" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.6p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssh-hostkey" output="&#xa;  2048 37:43:64:80:d3:5a:74:62:81:b7:80:6b:1a:23:d8:4a (RSA)&#xa;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDIDEV5ShmazmTw/1A6+19Bz9t3Aa669UOdJ6wf+mcv3vvJmh6gC8V8J58nisEufW0xnT69hRkbqrRbASQ8IrvNS8vNURpaA0cycHDntKA17ukX0HMO7AS6X8uHfIFZwTck5v6tLAyHlgBh21S+wOEqnANSms64VcSUma7fgUCKeyJd5lnDuQ9gCnvWh4VxSNoW8MdV64sOVLkyuwd0FUTiGctjTMyt0dYqIUnTkMgDLRB77faZnMq768R2x6bWWb98taMT93FKIfjTjGHV/bYsd/K+M6an6608wMbMbWz0pa0pB5Y9k4soznGUPO7mFa0n64w6ywS7wctcKngNVg3H&#xa;  256 53:c6:82:ef:d2:77:33:ef:c1:3d:9c:15:13:54:0e:b2 (ECDSA)&#xa;ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCs+ZcCT7Bj2uaY3QWJFO4+e3ndWR1cDquYmCNAcfOTH4L7lBiq1VbJ7Pr7XO921FXWL05bAtlvY1sqcQT6W43Y=&#xa;  256 ba:97:c3:23:d4:f2:cc:08:2c:e1:2b:30:06:18:95:41 (ED25519)&#xa;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGq9I/445X/oJstLHIcIruYVdW4KqIFZks9fygfPkkPq"><table>
+<elem key="fingerprint">37436480d35a746281b7806b1a23d84a</elem>
+<elem key="key">AAAAB3NzaC1yc2EAAAADAQABAAABAQDIDEV5ShmazmTw/1A6+19Bz9t3Aa669UOdJ6wf+mcv3vvJmh6gC8V8J58nisEufW0xnT69hRkbqrRbASQ8IrvNS8vNURpaA0cycHDntKA17ukX0HMO7AS6X8uHfIFZwTck5v6tLAyHlgBh21S+wOEqnANSms64VcSUma7fgUCKeyJd5lnDuQ9gCnvWh4VxSNoW8MdV64sOVLkyuwd0FUTiGctjTMyt0dYqIUnTkMgDLRB77faZnMq768R2x6bWWb98taMT93FKIfjTjGHV/bYsd/K+M6an6608wMbMbWz0pa0pB5Y9k4soznGUPO7mFa0n64w6ywS7wctcKngNVg3H</elem>
+<elem key="bits">2048</elem>
+<elem key="type">ssh-rsa</elem>
+</table>
+<table>
+<elem key="fingerprint">53c682efd27733efc13d9c1513540eb2</elem>
+<elem key="key">AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCs+ZcCT7Bj2uaY3QWJFO4+e3ndWR1cDquYmCNAcfOTH4L7lBiq1VbJ7Pr7XO921FXWL05bAtlvY1sqcQT6W43Y=</elem>
+<elem key="bits">256</elem>
+<elem key="type">ecdsa-sha2-nistp256</elem>
+</table>
+<table>
+<elem key="fingerprint">ba97c323d4f2cc082ce12b3006189541</elem>
+<elem key="key">AAAAC3NzaC1lZDI1NTE5AAAAIGq9I/445X/oJstLHIcIruYVdW4KqIFZks9fygfPkkPq</elem>
+<elem key="bits">256</elem>
+<elem key="type">ssh-ed25519</elem>
+</table>
+</script></port>
+<port protocol="tcp" portid="4420"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="nvm-express" servicefp="SF-Port4420-TCP:V=7.92%I=7%D=2/18%Time=620F5F7D%P=x86_64-pc-linux-gnu%r(NULL,A0,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\n&quot;)%r(GenericLines,C6,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n&quot;)%r(GetRequest,C6,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n&quot;)%r(HTTPOptions,C6,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n&quot;)%r(RTSPRequest,C6,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n&quot;)%r(RPCCheck,A0,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\n&quot;)%r(DNSVersionBindReqTCP,C6,&quot;INTERNAL\x20SHELL\x20SERVICE\nplease\x20note:\x20cd\x20commands\x20do\x20not\x20work\x20at\x20the\x20moment,\x20the\x20developers\x20are\x20fixing\x20it\x20at\x20the\x20moment\.\ndo\x20not\x20use\x20ctrl-c\nPlease\x20enter\x20password:\nInvalid\x20password\.\.\.\nConnection\x20Closed\n&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, RTSPRequest: &#xa;    INTERNAL SHELL SERVICE&#xa;    please note: cd commands do not work at the moment, the developers are fixing it at the moment.&#xa;    ctrl-c&#xa;    Please enter password:&#xa;    Invalid password...&#xa;    Connection Closed&#xa;  NULL, RPCCheck: &#xa;    INTERNAL SHELL SERVICE&#xa;    please note: cd commands do not work at the moment, the developers are fixing it at the moment.&#xa;    ctrl-c&#xa;    Please enter password:"><elem key="DNSVersionBindReqTCP, GenericLines, GetRequest, HTTPOptions, RTSPRequest">&#xa;    INTERNAL SHELL SERVICE&#xa;    please note: cd commands do not work at the moment, the developers are fixing it at the moment.&#xa;    ctrl-c&#xa;    Please enter password:&#xa;    Invalid password...&#xa;    Connection Closed</elem>
+<elem key="NULL, RPCCheck">&#xa;    INTERNAL SHELL SERVICE&#xa;    please note: cd commands do not work at the moment, the developers are fixing it at the moment.&#xa;    ctrl-c&#xa;    Please enter password:</elem>
+</script></port>
+<port protocol="tcp" portid="8080"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Apache httpd" version="2.4.46" extrainfo="(Unix) OpenSSL/1.1.1d PHP/7.3.27" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.46</cpe></service><script id="http-methods" output="&#xa;  Supported Methods: GET HEAD POST OPTIONS"><table key="Supported Methods">
+<elem>GET</elem>
+<elem>HEAD</elem>
+<elem>POST</elem>
+<elem>OPTIONS</elem>
+</table>
+</script><script id="http-title" output="Cat Pictures - Index page"><elem key="title">Cat Pictures - Index page</elem>
+</script><script id="http-server-header" output="Apache/2.4.46 (Unix) OpenSSL/1.1.1d PHP/7.3.27"><elem>Apache/2.4.46 (Unix) OpenSSL/1.1.1d PHP/7.3.27</elem>
+</script><script id="http-open-proxy" output="Potentially OPEN proxy.&#xa;Methods supported:CONNECTION"/></port>
+</ports>
+<times srtt="294900" rttvar="148447" to="888688"/>
+</host>
+<taskbegin task="NSE" time="1645174756"/>
+<taskend task="NSE" time="1645174756"/>
+<taskbegin task="NSE" time="1645174756"/>
+<taskend task="NSE" time="1645174756"/>
+<taskbegin task="NSE" time="1645174756"/>
+<taskend task="NSE" time="1645174756"/>
+<runstats><finished time="1645174756" timestr="Fri Feb 18 15:59:16 2022" summary="Nmap done at Fri Feb 18 15:59:16 2022; 1 IP address (1 host up) scanned in 120.26 seconds" elapsed="120.26" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
